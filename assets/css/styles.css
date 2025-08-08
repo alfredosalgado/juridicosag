@@ -682,7 +682,13 @@ html {
 /* Mission Section */
 .mission {
     padding: var(--section-padding);
-    background: white;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.9)),
+        url('../img/conoce.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 .mission-content {
@@ -1843,7 +1849,12 @@ rrecciones de contraste para secciones con fondo blanco */
 @media (prefers-color-scheme: dark) {
 
     .mission {
-        background: #2a2a2a !important;
+        background: linear-gradient(135deg, rgba(46, 52, 65, 0.95), rgba(42, 42, 42, 0.9)),
+            url('../img/conoce.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: fixed !important;
+        background-repeat: no-repeat !important;
     }
 
     .membership {
