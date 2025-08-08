@@ -472,6 +472,7 @@ html {
     border-radius: var(--border-radius);
     transition: var(--transition);
     box-shadow: var(--shadow-light);
+    border: 1px solid var(--accent-color);
 }
 
 .cta-button:hover {
@@ -602,9 +603,30 @@ html {
 }
 
 .service-description {
-    padding: 0 20px 20px;
+    padding: 0 20px 10px;
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+.service-btn {
+    display: inline-block;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 2px solid var(--text-primary);
+    padding: 10px 25px;
+    margin: 0 20px 20px;
+    transition: var(--transition);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.service-btn:hover {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
+    transform: translateY(-2px);
 }
 
 /* Quote Section */
@@ -662,7 +684,7 @@ html {
 }
 
 .quote-btn:hover {
-    background: var(--text-primary);
+    background: var(--accent-color);
     color: var(--text-light);
 }
 
@@ -737,7 +759,7 @@ html {
 }
 
 .mission-btn:hover {
-    background: var(--text-primary);
+    background: var(--accent-color);
     color: var(--text-light);
 }
 
@@ -1830,7 +1852,7 @@ rrecciones de contraste para secciones con fondo blanco */
 
 .read-more-btn:hover,
 .mission-btn:hover {
-    background: var(--text-primary) !important;
+    background: var(--accent-color) !important;
     color: var(--text-light) !important;
 }
 
@@ -2625,6 +2647,7 @@ los para la página Nosotros */
     background: var(--text-light);
     transform: translateY(-2px);
     box-shadow: var(--shadow-medium);
+    
 }
 
 /* Responsive para página Nosotros */
