@@ -11,7 +11,53 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
     const scrollProgress = document.getElementById('scroll-progress');
     const scrollUpBtn = document.getElementById('scroll-up-btn');
+    const themeToggle = document.getElementById('theme-toggle');
     
+    // Theme Toggle Functionality
+    if (themeToggle) {
+        // Cargar tema guardado o usar modo oscuro como predeterminado
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Si no hay tema guardado, usar modo oscuro por defecto
+        // Si hay tema guardado, usar ese tema
+        if (!savedTheme || savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+        
+        // Event listener para el botón de cambio de tema
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            
+            // Guardar preferencia en localStorage
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            // Opcional: Tracking del evento (si tienes analytics)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'theme_toggle', {
+                    'theme': isDark ? 'dark' : 'light'
+                });
+            }
+            
+            // Animación del botón
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+        
+        // Escuchar cambios en la preferencia del sistema
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.body.classList.add('dark-theme');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                }
+            }
+        });
+    }
+
     // Toggle del menú móvil
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
@@ -20,6 +66,211 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.toggle('menu-open');
         });
     }
+
+    // CV Modal Functions
+    window.openCVModal = function() {
+        const modal = document.getElementById('cvModal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        
+        if (modal && pdfViewer) {
+            // Set PDF source
+            pdfViewer.src = 'assets/files/CV-CARLOS-PONTIGO.pdf';
+            
+            // Show modal
+            modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Focus trap
+            modal.focus();
+            
+            // Optional: Analytics tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'cv_view', {
+                    'cv_owner': 'Carlos Pontigo'
+                });
+            }
+        }
+    };
+
+    window.closeCVModal = function() {
+        const modal = document.getElementById('cvModal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        
+        if (modal && pdfViewer) {
+            // Hide modal
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            
+            // Clear PDF source to stop loading
+            pdfViewer.src = '';
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+        }
+    };
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('cvModal');
+        if (modal && e.target === modal) {
+            closeCVModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('cvModal');
+            if (modal && modal.classList.contains('show')) {
+                closeCVModal();
+            }
+        }
+    });
+
+    // Visit Counter Functionality - Backend PHP
+    function initVisitCounter() {
+        const counterElement = document.getElementById('visitCounter');
+        if (!counterElement) return;
+
+        // Clave para verificar si ya se contó en esta sesión
+        const SESSION_COUNTED_KEY = 'agtjach_session_counted';
+        
+        // Verificar si ya se contó en esta sesión
+        const sessionCounted = sessionStorage.getItem(SESSION_COUNTED_KEY);
+        
+        // Primero obtener el contador actual
+        fetchCurrentCount()
+            .then(count => {
+                animateCounter(counterElement, count);
+                
+                // Si no se ha contado en esta sesión, incrementar
+                if (!sessionCounted) {
+                    incrementCounter()
+                        .then(newCount => {
+                            if (newCount > count) {
+                                animateCounter(counterElement, newCount);
+                            }
+                            // Marcar como contado en esta sesión
+                            sessionStorage.setItem(SESSION_COUNTED_KEY, 'true');
+                        })
+                        .catch(error => {
+                            console.log('Counter increment failed:', error);
+                        });
+                }
+            })
+            .catch(error => {
+                console.log('Counter fetch failed:', error);
+                // Fallback: mostrar número base
+                counterElement.textContent = '8536';
+            });
+        
+        // Actualizar contador periódicamente (cada 2-5 minutos)
+        setInterval(() => {
+            fetchCurrentCount()
+                .then(count => {
+                    const currentDisplayed = parseInt(counterElement.textContent.replace(/,/g, '')) || 0;
+                    if (count > currentDisplayed) {
+                        animateCounter(counterElement, count);
+                    }
+                })
+                .catch(error => {
+                    console.log('Periodic counter update failed:', error);
+                });
+        }, Math.random() * 180000 + 120000); // Entre 2-5 minutos
+    }
+    
+    // Función para obtener el contador actual del servidor
+    async function fetchCurrentCount() {
+        try {
+            const response = await fetch('counter.php', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                return data.count;
+            } else {
+                throw new Error(data.message || 'Failed to fetch counter');
+            }
+        } catch (error) {
+            console.error('Error fetching counter:', error);
+            throw error;
+        }
+    }
+    
+    // Función para incrementar el contador en el servidor
+    async function incrementCounter() {
+        try {
+            const response = await fetch('counter.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'increment',
+                    timestamp: new Date().toISOString()
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                return data.count;
+            } else {
+                throw new Error(data.message || 'Failed to increment counter');
+            }
+        } catch (error) {
+            console.error('Error incrementing counter:', error);
+            throw error;
+        }
+    }
+    
+    function animateCounter(element, targetValue) {
+        const currentValue = parseInt(element.textContent) || 0;
+        const increment = targetValue > currentValue ? 1 : -1;
+        const duration = 1000; // 1 segundo
+        const steps = Math.abs(targetValue - currentValue);
+        const stepDuration = steps > 0 ? duration / steps : 0;
+        
+        if (steps === 0) return;
+        
+        let current = currentValue;
+        const timer = setInterval(() => {
+            current += increment;
+            element.textContent = current.toLocaleString();
+            
+            // Efecto visual
+            element.style.transform = 'scale(1.1)';
+            element.style.color = 'var(--accent-color)';
+            
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+                element.style.color = '';
+            }, 150);
+            
+            if (current === targetValue) {
+                clearInterval(timer);
+            }
+        }, stepDuration);
+    }
+    
+    // Inicializar contador cuando el DOM esté listo
+    initVisitCounter();
     
     // Cerrar menú al hacer click en un enlace
     navLinks.forEach(link => {

@@ -256,6 +256,104 @@ html {
     transition: var(--transition);
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    color: var(--text-light);
+    margin-right: 15px;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    transition: var(--transition);
+}
+
+.sun-icon {
+    display: block;
+}
+
+.moon-icon {
+    display: none;
+}
+
+/* Dark theme styles */
+body.dark-theme .sun-icon {
+    display: none;
+}
+
+body.dark-theme .moon-icon {
+    display: block;
+}
+
+/* Manual Dark Theme Styles */
+body.dark-theme {
+    --secondary-color: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #333333;
+}
+
+body.dark-theme .service-card,
+body.dark-theme .news-card,
+body.dark-theme .membership-form {
+    background: #2a2a2a;
+    color: var(--text-primary);
+}
+
+body.dark-theme .form-row input,
+body.dark-theme .file-upload input {
+    background: #333333;
+    color: var(--text-primary);
+    border-color: #555555;
+}
+
+body.dark-theme .image-placeholder {
+    background: #2a2a2a;
+}
+
+body.dark-theme .mission {
+    background: linear-gradient(135deg, rgba(46, 52, 65, 0.95), rgba(42, 42, 42, 0.9)),
+        url('../img/conoce.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+}
+
+body.dark-theme .membership {
+    background: linear-gradient(135deg, rgba(46, 52, 65, 0.95), rgba(42, 42, 42, 0.9)),
+        url('../img/aso.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+}
+
+body.dark-theme .about {
+    background: linear-gradient(135deg, rgba(46, 52, 65, 0.95), rgba(42, 42, 42, 0.9)),
+        url('../img/jportada.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -1159,6 +1257,71 @@ html {
     padding-top: 20px;
     text-align: center;
     opacity: 0.6;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.visit-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgb(2, 2, 2);
+    padding: 16px 30px;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.visit-counter:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.counter-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--accent-color);
+}
+
+.counter-text {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+}
+
+.counter-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    min-width: 50px;
+    text-align: center;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive para el contador */
+@media (max-width: 768px) {
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .visit-counter {
+        order: -1;
+        margin-bottom: 10px;
+    }
 }
 
 /* Responsive Design */
@@ -2525,6 +2688,10 @@ los para la página Nosotros */
     background: white;
 }
 
+.directorio-section .section-title {
+    text-align: center;
+}
+
 .directorio-section .section-subtitle {
     font-size: 1.1rem;
     color: var(--text-secondary);
@@ -2562,9 +2729,16 @@ los para la página Nosotros */
 
 .directorio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-top: 40px;
+}
+
+/* Layout específico para el directorio vigente */
+.directorio-grid .director-card:first-child {
+    grid-column: 1 / -1;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .director-card {
@@ -2594,8 +2768,8 @@ los para la página Nosotros */
 }
 
 .director-avatar {
-    width: 80px;
-    height: 80px;
+    width: 180px;
+    height: 180px;
     margin: 0 auto 20px;
     background: var(--accent-color);
     border-radius: 50%;
@@ -2604,12 +2778,251 @@ los para la página Nosotros */
     justify-content: center;
     color: var(--primary-color);
     transition: var(--transition);
+    overflow: hidden;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.director-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: var(--transition);
 }
 
 .director-card:hover .director-avatar {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
+.director-card:hover .director-photo {
     transform: scale(1.1);
+}
+
+/* CV Button */
+.cv-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px auto 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.cv-btn:hover {
     background: var(--primary-color);
     color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 900px;
+    height: 90%;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid var(--border-color);
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.modal-title {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    flex: 1;
+    padding: 0;
+    overflow: hidden;
+}
+
+.modal-body iframe {
+    border: none;
+    border-radius: 0;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    border-top: 2px solid var(--border-color);
+    background: var(--secondary-color);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.download-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.download-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.download-btn:hover {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.close-btn {
+    background: var(--border-color);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.close-btn:hover {
+    background: var(--text-primary);
+    color: var(--text-light);
+}
+
+/* Modal Animations */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        height: 95%;
+        margin: 10px;
+    }
+
+    .modal-header {
+        padding: 15px 20px;
+    }
+
+    .modal-title {
+        font-size: 1.1rem;
+    }
+
+    .modal-footer {
+        padding: 12px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .download-btn,
+    .close-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 .director-name {
@@ -2696,8 +3109,14 @@ los para la página Nosotros */
     }
 
     .directorio-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+    }
+
+    .directorio-grid .director-card:first-child {
+        grid-column: 1 / -1;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     .director-card {
@@ -2725,6 +3144,12 @@ los para la página Nosotros */
 
     .directorio-grid {
         grid-template-columns: 1fr;
+    }
+
+    .directorio-grid .director-card:first-child {
+        grid-column: 1;
+        max-width: none;
+        margin: 0;
     }
 
     .director-card {
