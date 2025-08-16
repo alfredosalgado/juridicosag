@@ -4060,3 +4060,387 @@ section.about {
     position: relative !important;
     z-index: 2 !important;
 }
+
+/* Soc
+ial Media Styles */
+.social-media {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-media h4 {
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Colores específicos para cada red social */
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-color: #e6683c;
+    color: white;
+}
+
+.social-icon.facebook:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+    color: white;
+}
+
+.social-icon.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+    color: white;
+}
+
+.social-icon.twitter:hover {
+    background: #000000;
+    border-color: #000000;
+    color: white;
+}
+
+.social-icon.tiktok:hover {
+    background: linear-gradient(45deg, #ff0050, #00f2ea);
+    border-color: #ff0050;
+    color: white;
+}
+
+/* Animaciones adicionales para redes sociales */
+.social-icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.social-icon:hover::before {
+    left: 100%;
+}
+
+/* Responsive para redes sociales */
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 12px;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-media {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+
+    .social-icons {
+        gap: 10px;
+    }
+
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .social-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* I
+nterest Links Styles */
+.interest-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.interest-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-light);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.interest-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.interest-link img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: white;
+    padding: 2px;
+}
+
+.interest-link span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.2;
+}
+
+.interest-link:hover span {
+    color: var(--accent-color);
+}
+
+/* Responsive para links de interés */
+@media (max-width: 768px) {
+    .interest-links {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .interest-link {
+        padding: 10px;
+    }
+
+    .interest-link img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .interest-link span {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .interest-link {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .interest-link img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .interest-link span {
+        font-size: 0.75rem;
+    }
+}
+
+/* Fre
+e Membership Highlight Styles */
+.highlight-benefit {
+    background: linear-gradient(135deg, var(--accent-color), #e6c547);
+    color: var(--primary-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin: 25px 0;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.highlight-benefit strong {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.highlight-benefit span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.free-membership-banner {
+    background: linear-gradient(135deg, var(--accent-color), #e6c547);
+    color: var(--primary-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin: 30px 0 50px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    border: 3px solid rgba(212, 175, 55, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.free-membership-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.free-membership-banner h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 2;
+}
+
+.free-membership-banner p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+}
+
+/* Animaciones para destacar la membresía gratuita */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 12px 35px rgba(212, 175, 55, 0.5);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* Responsive para destacados de membresía */
+@media (max-width: 768px) {
+    .highlight-benefit {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .highlight-benefit strong {
+        font-size: 1rem;
+    }
+
+    .highlight-benefit span {
+        font-size: 0.9rem;
+    }
+
+    .free-membership-banner {
+        padding: 25px 20px;
+        margin: 25px 0 40px;
+    }
+
+    .free-membership-banner h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    .free-membership-banner p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .highlight-benefit {
+        padding: 12px;
+        margin: 15px 0;
+    }
+
+    .highlight-benefit strong {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+
+    .highlight-benefit span {
+        font-size: 0.85rem;
+    }
+
+    .free-membership-banner {
+        padding: 20px 15px;
+        margin: 20px 0 35px;
+    }
+
+    .free-membership-banner h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+    .free-membership-banner p {
+        font-size: 0.9rem;
+    }
+}
