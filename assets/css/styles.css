@@ -2851,7 +2851,7 @@ los para la página Nosotros */
 /* Directorio Section */
 .directorio-section {
     padding: var(--section-padding);
-    background: linear-gradient(rgba(255, 255, 255, 0.089), rgba(255, 255, 255, 0.096)), url('/assets/img/directorio2.jpg');
+    background: linear-gradient(rgba(255, 255, 255, 0.089), rgba(255, 255, 255, 0.096)), url('../img/directorio2.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
