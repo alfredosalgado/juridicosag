@@ -311,7 +311,8 @@ body.dark-theme {
 
 body.dark-theme .service-card,
 body.dark-theme .news-card,
-body.dark-theme .membership-form {
+body.dark-theme .membership-form,
+body.dark-theme .challenge-card {
     background: #2a2a2a;
     color: var(--text-primary);
 }
@@ -2606,6 +2607,88 @@ los para la página Nosotros */
     text-align: justify;
 }
 
+/* Challenges Section */
+.challenges-section {
+    padding: var(--section-padding);
+    background: linear-gradient(135deg, rgba(248, 249, 250, 0.185) 0%, rgba(233, 236, 239, 0.123) 100%),
+        url('../img/ataque.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.challenge-content {
+    margin-top: 40px;
+}
+
+.challenge-card {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.challenge-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.challenge-card:hover::before {
+    left: 100%;
+}
+
+.challenge-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    color: var(--accent-color);
+    position: relative;
+    z-index: 2;
+}
+
+.challenge-title {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 2;
+}
+
+.challenge-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    text-align: justify;
+    position: relative;
+    z-index: 2;
+}
+
+.challenge-description:last-child {
+    margin-bottom: 0;
+}
+
 /* Mission Vision Section */
 .mission-vision-section {
     padding: var(--section-padding);
@@ -2685,7 +2768,12 @@ los para la página Nosotros */
 /* Directorio Section */
 .directorio-section {
     padding: var(--section-padding);
-    background: white;
+    background: linear-gradient(rgba(255, 255, 255, 0.089), rgba(255, 255, 255, 0.096)), url('/assets/img/directorio2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 .directorio-section .section-title {
@@ -3108,6 +3196,20 @@ los para la página Nosotros */
         padding: 30px 20px;
     }
 
+    .challenge-card {
+        padding: 30px 20px;
+        margin: 0 20px;
+    }
+
+    .challenge-title {
+        font-size: 1.3rem;
+    }
+
+    .challenge-description {
+        font-size: 1rem;
+        text-align: left;
+    }
+
     .directorio-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -3361,8 +3463,7 @@ Correcciones de contraste para página Nosotros */
 /* Correcciones para modo oscuro en página nosotros */
 @media (prefers-color-scheme: dark) {
 
-    .history-section,
-    .directorio-section {
+    .history-section {
         background: #2a2a2a !important;
     }
 
@@ -3464,7 +3565,9 @@ Correcciones de contraste para página Nosotros */
 .mission-card .card-title,
 .mission-card .card-description,
 .vision-card .card-title,
-.vision-card .card-description {
+.vision-card .card-description,
+.challenge-title,
+.challenge-description {
     color: var(--text-primary);
 }
 
@@ -3473,7 +3576,8 @@ Correcciones de contraste para página Nosotros */
 .directorio-description,
 .directorio-section .section-subtitle,
 .mission-card .card-description,
-.vision-card .card-description {
+.vision-card .card-description,
+.challenge-description {
     color: var(--text-secondary);
 }
 
