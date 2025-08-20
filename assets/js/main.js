@@ -127,6 +127,163 @@ document.addEventListener('DOMContentLoaded', function() {
             if (modal && modal.classList.contains('show')) {
                 closeCVModal();
             }
+            const certificateModal = document.getElementById('certificateModal');
+            if (certificateModal && certificateModal.classList.contains('show')) {
+                closeCertificateModal();
+            }
+            const directoryDocumentModal = document.getElementById('directorioDocModal');
+            if (directoryDocumentModal && directoryDocumentModal.classList.contains('show')) {
+                closeDirectorioDocModal();
+            }
+            const hackDocumentModal = document.getElementById('hackDocModal');
+            if (hackDocumentModal && hackDocumentModal.classList.contains('show')) {
+                closeHackDocModal();
+            }
+        }
+    });
+
+    // Certificate Modal Functions
+    window.openCertificateModal = function() {
+        const modal = document.getElementById('certificateModal');
+        
+        if (modal) {
+            // Show modal
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeCertificateModal = function() {
+        const modal = document.getElementById('certificateModal');
+        
+        if (modal) {
+            // Hide modal
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+            
+            // Hide modal after animation
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    };
+
+    // Certificate button event listener
+    const certificateBtn = document.getElementById('certificateBtn');
+    if (certificateBtn) {
+        certificateBtn.addEventListener('click', openCertificateModal);
+    }
+
+    // Close certificate modal when clicking outside
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('certificateModal');
+        if (modal && e.target === modal) {
+            closeCertificateModal();
+        }
+    });
+
+    // Directory Document Modal Functions
+    window.openDirectorioDocModal = function() {
+        const modal = document.getElementById('directorioDocModal');
+        
+        if (modal) {
+            // Show modal
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeDirectorioDocModal = function() {
+        const modal = document.getElementById('directorioDocModal');
+        
+        if (modal) {
+            // Hide modal
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+            
+            // Hide modal after animation
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    };
+
+    // Directory document button event listener
+    const directoryDocumentBtn = document.getElementById('directorioDocBtn');
+    if (directoryDocumentBtn) {
+        directoryDocumentBtn.addEventListener('click', openDirectorioDocModal);
+    }
+
+    // Close directory document modal when clicking outside
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('directorioDocModal');
+        if (modal && e.target === modal) {
+            closeDirectorioDocModal();
+        }
+    });
+
+    // Hack Document Modal Functions
+    window.openHackDocModal = function() {
+        const modal = document.getElementById('hackDocModal');
+        
+        if (modal) {
+            // Show modal
+            modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Add show class for animation
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+    };
+
+    window.closeHackDocModal = function() {
+        const modal = document.getElementById('hackDocModal');
+        
+        if (modal) {
+            // Hide modal
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+            
+            // Hide modal after animation
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+    };
+
+    // Hack document button event listener
+    const hackDocumentBtn = document.getElementById('hackDocBtn');
+    if (hackDocumentBtn) {
+        hackDocumentBtn.addEventListener('click', openHackDocModal);
+    }
+
+    // Close hack document modal when clicking outside
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('hackDocModal');
+        if (modal && e.target === modal) {
+            closeHackDocModal();
         }
     });
 

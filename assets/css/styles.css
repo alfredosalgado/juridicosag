@@ -195,9 +195,10 @@ html {
 }
 
 .logo-icon {
-    width: 32px;
-    height: 32px;
-    color: var(--accent-color);
+    width: 62px;
+    height: 62px;
+    border-radius: 6px;
+    object-fit: contain;
 }
 
 .logo-text {
@@ -1550,6 +1551,29 @@ body.dark-theme .about {
     background: var(--primary-color);
     color: var(--text-light);
     padding: 60px 0 20px;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.footer-logo-img {
+    width: 148px;
+    height: 148px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.footer-logo-text {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-light);
 }
 
 .footer-content {
@@ -3019,7 +3043,7 @@ los para la página Nosotros */
 /* History Section */
 .history-section {
     padding: var(--section-padding);
-    background: white;
+    background: #2a2a2a;
 }
 
 .content-wrapper {
@@ -3035,7 +3059,7 @@ los para la página Nosotros */
 .history-text {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: var(--text-secondary);
+    color: #cccccc;
     margin-bottom: 25px;
     text-align: justify;
 }
@@ -3137,7 +3161,7 @@ los para la página Nosotros */
 
 .mission-card,
 .vision-card {
-    background: white;
+    background: #333333;
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
@@ -3184,7 +3208,7 @@ los para la página Nosotros */
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: var(--text-primary);
+    color: var(--text-light);
     position: relative;
     z-index: 2;
 }
@@ -3192,7 +3216,7 @@ los para la página Nosotros */
 .card-description {
     font-size: 1rem;
     line-height: 1.7;
-    color: var(--text-secondary);
+    color: #cccccc;
     text-align: justify;
     position: relative;
     z-index: 2;
@@ -3352,6 +3376,54 @@ los para la página Nosotros */
     box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
+/* Directorio Document Section */
+.directorio-document-section {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.directorio-document-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+
+.document-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.directorio-document-btn:hover {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.directorio-document-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 /* Modal Styles */
 .modal {
     display: none;
@@ -3494,6 +3566,108 @@ los para la página Nosotros */
     color: var(--text-light);
 }
 
+/* Certificate Button Styles */
+.certificate-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.certificate-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.certificate-btn:hover {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.certificate-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Certificate Image Styles */
+.certificate-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    cursor: zoom-in;
+    transition: var(--transition);
+}
+
+.certificate-image:hover {
+    transform: scale(1.02);
+}
+
+/* Hack Document Button Styles */
+.hack-document-section {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.hack-document-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.hack-document-btn:hover {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.hack-document-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hack Document Image Styles */
+.hack-document-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    cursor: zoom-in;
+    transition: var(--transition);
+}
+
+.hack-document-image:hover {
+    transform: scale(1.02);
+}
+
 /* Modal Animations */
 @keyframes modalFadeIn {
     from {
@@ -3543,6 +3717,21 @@ los para la página Nosotros */
     .close-btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .certificate-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+
+    .certificate-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .certificate-image {
+        border-radius: 4px;
     }
 }
 
@@ -3786,7 +3975,8 @@ los para la página Nosotros */
     }
 }
 
-/ * Estilos para tarjetas de servicio como enlaces */ .service-card-link {
+/* Estilos para tarjetas de servicio como enlaces */
+.service-card-link {
     text-decoration: none;
     color: inherit;
     display: block;
@@ -3987,21 +4177,15 @@ Correcciones de contraste para página Nosotros */
     color: inherit;
 }
 
-/* Corrección final para asegurar que no hay texto blanco sobre fondo blanco en nosotros */
+/* Corrección final para asegurar textos claros en modo oscuro */
 .history-section .section-title,
-.history-text,
 .directorio-section .section-title,
-.directorio-section .section-subtitle,
 .directorio-title,
-.directorio-description,
 .director-name,
 .mission-card .card-title,
-.mission-card .card-description,
 .vision-card .card-title,
-.vision-card .card-description,
-.challenge-title,
-.challenge-description {
-    color: var(--text-primary);
+.challenge-title {
+    color: var(--text-light);
 }
 
 /* Asegurar que los textos secundarios sean grises legibles */
@@ -4011,7 +4195,7 @@ Correcciones de contraste para página Nosotros */
 .mission-card .card-description,
 .vision-card .card-description,
 .challenge-description {
-    color: var(--text-secondary);
+    color: #cccccc;
 }
 
 /* Asegurar que los elementos de acento mantengan su color */
@@ -4979,5 +5163,71 @@ e Membership Highlight Styles */
 
     .free-membership-banner p {
         font-size: 0.9rem;
+    }
+}
+
+/* Responsive para botón documento directorio */
+@media (max-width: 768px) {
+    .directorio-document-section {
+        margin: 20px 0;
+        padding: 15px;
+    }
+
+    .directorio-document-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+
+    .document-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .directorio-document-btn {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .document-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Responsive Styles for Hack Document Button */
+@media (max-width: 768px) {
+    .hack-document-section {
+        margin: 20px 0;
+        padding: 15px;
+    }
+
+    .hack-document-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+
+    .hack-document-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hack-document-btn {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hack-document-icon {
+        width: 16px;
+        height: 16px;
     }
 }
