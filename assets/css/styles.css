@@ -366,6 +366,7 @@ body.dark-theme .about {
     text-align: center;
     color: var(--text-light);
     overflow: hidden;
+    padding-top: 122px;
 }
 
 .hero-background {
@@ -394,7 +395,7 @@ body.dark-theme .about {
 
 .hero-title {
     font-family: var(--font-primary);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 5vw, 3rem);
     font-weight: 600;
     margin-bottom: 20px;
     line-height: 1.2;
@@ -2424,7 +2425,7 @@ os adicionales para mejorar la experiencia */
     }
 
     .hero-title {
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .section-title {
@@ -3128,7 +3129,7 @@ los para la página Nosotros */
     text-align: center;
     color: var(--text-light);
     overflow: hidden;
-    margin-top: 70px;
+    padding-top: 122px;
 }
 
 .hero-secondary .hero-background {
