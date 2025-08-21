@@ -2832,8 +2832,8 @@ rrecciones de contraste para secciones con fondo blanco */
 
 /* Imagen QR dentro del botón flotante */
 .btn-qr-image {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
    border-radius: 5px;
     transition: all 0.3s ease;
