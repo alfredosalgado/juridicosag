@@ -62,9 +62,6 @@
                 <h1 class="hero-title">Asociación Gremial de Técnicos Jurídicos y Técnicos General Afines de Chile A.G.</h1>
                 <p class="hero-subtitle">"20 años construyendo el futuro y la dignidad de la profesión técnico-jurídica"
                 </p>
-                <div class="hero-qr">
-                    <img src="assets/img/QRWEBlack.png" alt="Código QR - Asociación Gremial" class="qr-image">
-                </div>
             </div>
         </div>
         <div class="hero-scroll">
@@ -456,8 +453,9 @@
                     <p>Santiago, Chile</p>
                     <br>
                     <h4>CANALES DE COMUNICACIÓN</h4>
-                    <p>Email: directorio@juridicosag.cl</p>
-                    <p>Tel: +56 9 3693 6021</p>
+                    <p>Email: <a href="mailto:directorio@juridicosag.cl" style="color: var(--accent-color); text-decoration: none;">directorio@juridicosag.cl</a></p>
+                    <p>Tel: <a href="tel:+56936936021" style="color: var(--accent-color); text-decoration: none;">+56 9 3693 6021</a></p>
+                    <p>WhatsApp: <a href="https://wa.me/56936936021" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none;">+56 9 3693 6021</a></p>
                 </div>
                 <div class="footer-section">
                     <h3>LINKS DE INTERÉS</h3>
@@ -559,6 +557,14 @@
             </svg>
         </button>
 
+        <!-- Botón QR -->
+        <div class="floating-btn-container">
+            <button class="floating-btn qr-btn" id="qr-btn" aria-label="Ver código QR">
+                <img class="btn-qr-image" src="assets/img/QRWEBlack.png" alt="Código QR">
+            </button>
+            <div class="floating-tooltip qr-tooltip">Descarga el QR de la web aquí</div>
+        </div>
+
         <!-- Botón WhatsApp -->
         <a href="https://wa.me/56936936021?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20la%20Asociación%20Gremial%20de%20Técnicos%20Jurídicos"
             class="floating-btn whatsapp-btn" target="_blank" rel="noopener noreferrer"
@@ -569,6 +575,34 @@
                     fill="currentColor" />
             </svg>
         </a>
+    </div>
+
+    <!-- Modal QR -->
+    <div id="qr-modal" class="qr-modal">
+        <div class="qr-modal-content">
+            <button class="qr-modal-close" id="qr-modal-close" aria-label="Cerrar modal">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="qr-modal-image">
+                <img src="assets/img/QRWEBlack.png" alt="Código QR - Asociación Gremial" id="qr-image">
+            </div>
+            <div class="qr-modal-actions">
+                <button class="qr-action-btn" id="download-qr" aria-label="Descargar QR">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Descargar
+                </button>
+                <button class="qr-action-btn" id="share-qr" aria-label="Compartir QR">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Compartir
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="assets/js/main.js"></script>

@@ -951,3 +951,135 @@ if ('serviceWorker' in navigator) {
         //     .catch(error => console.log('SW registration failed'));
     });
 }
+
+// Funcionalidad del botón QR y modal
+document.addEventListener('DOMContentLoaded', function() {
+    const qrBtn = document.getElementById('qr-btn');
+    const qrModal = document.getElementById('qr-modal');
+    const qrModalClose = document.getElementById('qr-modal-close');
+    const downloadQrBtn = document.getElementById('download-qr');
+    const shareQrBtn = document.getElementById('share-qr');
+    const qrImage = document.getElementById('qr-image');
+
+    // Abrir modal QR
+    if (qrBtn) {
+        qrBtn.addEventListener('click', function() {
+            qrModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // Tracking del evento
+            if (typeof trackEvent === 'function') {
+                trackEvent('QR', 'open_modal', 'QR Modal Opened');
+            }
+        });
+    }
+
+    // Cerrar modal QR
+    function closeQrModal() {
+        qrModal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    if (qrModalClose) {
+        qrModalClose.addEventListener('click', closeQrModal);
+    }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    if (qrModal) {
+        qrModal.addEventListener('click', function(e) {
+            if (e.target === qrModal) {
+                closeQrModal();
+            }
+        });
+    }
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && qrModal.classList.contains('show')) {
+            closeQrModal();
+        }
+    });
+
+    // Descargar QR
+    if (downloadQrBtn && qrImage) {
+        downloadQrBtn.addEventListener('click', function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                // Crear enlace de descarga
+                const link = document.createElement('a');
+                link.download = 'QR-Asociacion-Gremial-Tecnicos-Juridicos.png';
+                link.href = canvas.toDataURL();
+                link.click();
+                
+                // Tracking del evento
+                if (typeof trackEvent === 'function') {
+                    trackEvent('QR', 'download', 'QR Downloaded');
+                }
+                
+                showNotification('QR descargado exitosamente', 'success');
+            };
+            
+            img.crossOrigin = 'anonymous';
+            img.src = qrImage.src;
+        });
+    }
+
+    // Compartir QR
+    if (shareQrBtn) {
+        shareQrBtn.addEventListener('click', async function() {
+            try {
+                // Verificar si el navegador soporta Web Share API
+                if (navigator.share) {
+                    // Convertir imagen a blob para compartir
+                    const response = await fetch(qrImage.src);
+                    const blob = await response.blob();
+                    const file = new File([blob], 'QR-Asociacion-Gremial.png', { type: 'image/png' });
+                    
+                    await navigator.share({
+                        title: 'Código QR - Asociación Gremial de Técnicos Jurídicos',
+                        text: 'Código QR de la Asociación Gremial de Técnicos Jurídicos y Técnicos General Afines de Chile',
+                        files: [file]
+                    });
+                    
+                    // Tracking del evento
+                    if (typeof trackEvent === 'function') {
+                        trackEvent('QR', 'share_native', 'QR Shared via Native API');
+                    }
+                } else {
+                    // Fallback: copiar URL al portapapeles
+                    const url = window.location.origin + '/' + qrImage.src;
+                    await navigator.clipboard.writeText(url);
+                    showNotification('Enlace del QR copiado al portapapeles', 'success');
+                    
+                    // Tracking del evento
+                    if (typeof trackEvent === 'function') {
+                        trackEvent('QR', 'share_clipboard', 'QR URL Copied to Clipboard');
+                    }
+                }
+            } catch (error) {
+                console.error('Error al compartir:', error);
+                
+                // Fallback adicional: mostrar opciones de compartir manual
+                const shareText = `Código QR - Asociación Gremial de Técnicos Jurídicos y Técnicos General Afines de Chile: ${window.location.origin}`;
+                
+                if (navigator.clipboard) {
+                    try {
+                        await navigator.clipboard.writeText(shareText);
+                        showNotification('Información copiada al portapapeles', 'success');
+                    } catch (clipboardError) {
+                        showNotification('No se pudo compartir automáticamente', 'warning');
+                    }
+                } else {
+                    showNotification('Función de compartir no disponible', 'warning');
+                }
+            }
+        });
+    }
+});
