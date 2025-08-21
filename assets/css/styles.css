@@ -415,6 +415,25 @@ body.dark-theme .about {
     animation: heroSubtitleAppear 1.2s ease-out 1s forwards;
 }
 
+.hero-qr {
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroQrAppear 1.2s ease-out 1.5s forwards;
+}
+
+.qr-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.qr-image:hover {
+    transform: scale(1.05);
+}
+
 .hero-scroll {
     position: absolute;
     bottom: 30px;
@@ -490,6 +509,23 @@ body.dark-theme .about {
         opacity: 0.9;
         transform: translateY(0);
         letter-spacing: normal;
+    }
+}
+
+@keyframes heroQrAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+    }
+
+    70% {
+        opacity: 0.8;
+        transform: translateY(10px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -4598,7 +4634,7 @@ s para la imagen who.jpg en about-section */
 
 /* Mejoras para accesibilidad de la imagen who */
 .who-image {
-    alt: "Profesionales técnicos jurídicos trabajando en equipo";
+    alt: "Profesionales técnicos jurídicos y técnicos general afines trabajando en equipo";
 }
 
 /* Lazy loading para la imagen who */
