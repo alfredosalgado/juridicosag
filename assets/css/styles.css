@@ -1059,6 +1059,112 @@ body.dark-theme .about {
     color: var(--text-primary);
 }
 
+/* Prensa Online Section */
+.prensa-online-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px solid var(--border-color);
+    text-align: center;
+}
+
+.prensa-title {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.prensa-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.prensa-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+.prensa-image:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.lno-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 12px;
+}
+
+.prensa-btn {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+}
+
+.prensa-btn:hover {
+    background: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Responsive Prensa Online */
+@media (max-width: 768px) {
+    .prensa-title {
+        font-size: 1.6rem;
+    }
+    
+    .prensa-image {
+        width: 250px;
+        height: 150px;
+    }
+    
+    .prensa-btn {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .prensa-online-section {
+        margin-top: 40px;
+        padding-top: 30px;
+    }
+    
+    .prensa-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+    
+    .prensa-image {
+        width: 220px;
+        height: 130px;
+    }
+    
+    .prensa-content {
+        gap: 20px;
+    }
+}
+
 /* Proposal Section */
 .proposal-section {
     padding: var(--section-padding);
@@ -4934,8 +5040,9 @@ nterest Links Styles */
 .interest-link {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 12px;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
     text-decoration: none;
@@ -4952,19 +5059,16 @@ nterest Links Styles */
 }
 
 .interest-link img {
-    width: 32px;
-    height: 32px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
     border-radius: 4px;
     background: white;
-    padding: 2px;
+    padding: 4px;
 }
 
 .interest-link span {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.2;
+    display: none;
 }
 
 .interest-link:hover span {
@@ -4974,37 +5078,37 @@ nterest Links Styles */
 /* Responsive para links de interés */
 @media (max-width: 768px) {
     .interest-links {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
     .interest-link {
-        padding: 10px;
+        padding: 12px;
     }
 
     .interest-link img {
-        width: 28px;
-        height: 28px;
+        width: 45px;
+        height: 45px;
     }
 
     .interest-link span {
-        font-size: 0.8rem;
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
     .interest-link {
-        padding: 8px;
+        padding: 10px;
         gap: 8px;
     }
 
     .interest-link img {
-        width: 24px;
-        height: 24px;
+        width: 40px;
+        height: 40px;
     }
 
     .interest-link span {
-        font-size: 0.75rem;
+        display: none;
     }
 }
 
