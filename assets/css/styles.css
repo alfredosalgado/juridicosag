@@ -1627,6 +1627,18 @@ body.dark-theme .about {
     align-items: start;
     gap: 12px;
     margin-bottom: 30px;
+    text-decoration: none;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.footer-logo:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.footer-logo:hover .footer-logo-text {
+    color: var(--accent-color);
 }
 
 .footer-logo-img {
@@ -1634,6 +1646,11 @@ body.dark-theme .about {
     height: 148px;
     border-radius: 10px;
     object-fit: contain;
+    transition: var(--transition);
+}
+
+.footer-logo:hover .footer-logo-img {
+    transform: scale(1.05);
 }
 
 .footer-logo-text {
@@ -1642,6 +1659,7 @@ body.dark-theme .about {
     font-weight: 600;
     letter-spacing: 1px;
     color: var(--text-light);
+    transition: var(--transition);
 }
 
 .footer-content {
